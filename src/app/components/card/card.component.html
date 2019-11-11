@@ -1,0 +1,63 @@
+<div class="content">
+  <div id="search-bar">
+    <div class="container search-bar__content">
+      <div class="search-bar__content--relative">
+        <input #search type="text" (keyup)="searchMovie(search.value)" placeholder="Search movies..">
+        <i class="icon fas fa-search"></i>
+      </div>
+    </div>
+  </div>
+  <div
+  infiniteScroll
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="20"
+  (scrolled)="onScroll()">
+    <div class="section">
+      <div class="container section__title">
+        <h1 class="title">Upcoming Movies</h1>
+      </div>
+      <div class="container section__cards">
+        <div (click)="goToMovie(item)" *ngFor="let item of items" class="card wow fadeIn" data-wow-duration=".5s">
+          <img class="card__image" [src]="api.getMovieImage(item)" alt="{{ item.title }}"/>
+          <div class="card__content">
+            <h3 class="card__title">{{ item.title }}</h3>
+            <p class="card__genre">{{ api.getMovieGenres(item.genre_ids) }}</p>
+            <p class="card__date"><i class="icon far fa-calendar-alt"></i>{{ item.release_date }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="no-results">
+    <div class="container no-results__content">
+      <h3 class="no-results__text small-title">Sorry, no results were found for your search.</h3>
+    </div>
+  </div>
+  <div class="section">
+    <div class="container section__spinner">
+      <ngx-spinner
+      bdOpacity = 0.9
+      bdColor = ""
+      size = "default"
+      color = "#FF9999"
+      type = "ball-pulse-sync"
+      [fullScreen] = "false"
+      >
+      </ngx-spinner>
+    </div>
+  </div>
+  <div id="go-to-top" (click)="goToTop()">
+    <i class="icon fas fa-arrow-up"></i>
+  </div>
+  <footer>
+    <div class="container footer__content">
+      <p>Developed by: Willian Anderson</p>
+      <a href="https://www.linkedin.com/in/willian-anderson-957ba4164/" target="_blank">
+        <i class="icon fab fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/willcodev" target="_blank">
+        <i class="icon fab fa-github"></i>
+      </a>
+    </div>
+  </footer>
+</div>

@@ -1,0 +1,38 @@
+<app-loading></app-loading>
+<div class="content">
+  <div id="action-return" class="wow fadeIn" data-wow-delay="1.8s">
+    <div class="action-return__content" (click)="goToHome()">
+      <div class="action-return__icon">
+        <i class="icon fas fa-arrow-left"></i>
+      </div>
+      <div class="action-return__text">
+        Return
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="container section__movie">
+      <img class="movie__image wow fadeIn" data-wow-delay="1.8s" [src]="api.getMovieImage(movie)" alt="{{ movie.title }}"/>
+      <div class="movie__content wow fadeIn" data-wow-delay="1.8s">
+        <h1 class="movie__title title">{{ movie.title }}</h1>
+        <h3 class="small-title">Overview:</h3>
+        <p class="movie__overview">{{ movie.overview }}</p>
+        <h3 class="small-title">Genres:</h3>
+        <p class="movie__genre">{{ showMovieGenres(movie.genres) }}</p>
+        <h3 class="small-title">Release Date:</h3>
+        <p class="movie__date"><i class="icon far fa-calendar-alt"></i>{{ movie.release_date }}</p>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="container footer__content">
+      <p>Developed by: Willian Anderson</p>
+      <a href="https://www.linkedin.com/in/willian-anderson-957ba4164/" target="_blank">
+        <i class="icon fab fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/willcodev" target="_blank">
+        <i class="icon fab fa-github"></i>
+      </a>
+    </div>
+  </footer>
+</div>
